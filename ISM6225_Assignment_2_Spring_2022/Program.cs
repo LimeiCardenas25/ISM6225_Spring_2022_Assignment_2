@@ -132,8 +132,17 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //Write your Code here.
-                return -1;
+
+                if ( arr)
+                {
+                    
+                    for (var i = 0; i < nums.Length; i++)
+                    {
+                        if (nums[i] == target)
+                            return i;
+                    }
+
+                }
             }
             catch (Exception)
             {
@@ -163,10 +172,28 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
+                var special = new string[] { "?", ",", "!", "'", "\"", ".", ";", "." };
+                for (var d = 0; d < special.Length; d++)
+                {
+                    if (paragraph.Contains(special[d]))
+                    {
+                        paragraph = paragraph.Replace(special[d], " ");
+                    }
+                }
+                var p = paragraph.ToLower();
+                var pp = p.Split(" ");
+                foreach (var item in banned)
+                {
+                    pp = pp.Where(v => v != item).ToArray();
+                }
+                var f = pp.GroupBy(x => x);
+                var count = f.Max(g => g.Count());
+                var most = f.Where(x => x.Count() == count).Select(x => x.Key).ToArray();
+                foreach (var m in most)
+                {
+                    return string.Concat("\"",m,"\""); 
+                }
                 
-                //write your code here.
-
-                return "";
             }
             catch (Exception)
             {
