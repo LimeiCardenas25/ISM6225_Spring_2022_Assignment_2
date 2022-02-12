@@ -329,9 +329,26 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //write your code here.
-                
-                return new List<int>() {} ;
+                var last = new int[26];
+                var ans = new ArrayList();
+                for (int i = 0; i < s.Length; i++)
+                {
+                    last[s[i]
+                        - 'a'] = i;
+                }
+                int j = 0, anchor = 0;
+                for (int i = 0; i < s.Length; i++)
+                {
+                    j = Math.Max(j, last[s[i]
+                        - 'a']);
+                    if (i == j)
+                    {
+                        ans.Add(i - anchor + 1);
+                        anchor = i + 1;
+                    }
+                }
+                foreach (var f in ans)
+                { return f; }
             }
             catch (Exception)
             {
