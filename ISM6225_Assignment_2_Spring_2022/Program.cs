@@ -563,9 +563,26 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //write your code here.
+                var morse = new List<string> { ".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-",
+                "..-","...-",".--","-..-","-.--","--.."};
 
-                return 0;
+                var outcome = new List<String>();
+                foreach (var i in words)
+                {
+                    string r = string.Empty;
+                    foreach (var t in i)
+                    {
+                        r += morse[t - 97];
+                    }
+                    outcome.Add(r);
+                }
+                var outcome1 = new List<string>();
+                foreach (var g in outcome)
+                {
+                    if (!outcome1.Contains(g))
+                    { outcome1.Add(g); }
+                }
+                return outcome1.Count;
             }
             catch (Exception)
             {
@@ -596,8 +613,7 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //write your code here.
-                return 0;
+               
             }
             catch (Exception)
             {
