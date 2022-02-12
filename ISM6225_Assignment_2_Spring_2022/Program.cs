@@ -390,9 +390,20 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //write your code here.
-
-                return new List<int>() { };
+                int count = 1;
+                int sum = 0;
+                var ss = s.ToCharArray();
+                foreach (var item in ss)
+                {
+                    int w = widths[item - 'a'];
+                    sum += w;
+                    if (sum > 100)
+                    {
+                        count++;
+                        sum = w;
+                    }
+                }
+                return new int[] { count, sum };
             }
             catch (Exception)
             {
