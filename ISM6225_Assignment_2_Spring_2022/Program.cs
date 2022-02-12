@@ -347,8 +347,7 @@ namespace ISM6225_Assignment_2_Spring_2022
                         anchor = i + 1;
                     }
                 }
-                foreach (var f in ans)
-                { return f; }
+                return ans;
             }
             catch (Exception)
             {
@@ -430,9 +429,89 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //write your code here.
+                var mystack = new Stack<char>();
+                if (bulls_string10.Length % 2 == 0)
+                {
+                    foreach (var curr in bulls_string10)
+                    {
+                        if (curr == '(')
+                        {
+                            mystack.Push(curr);
+                        }
+                        else if (curr == '[')
 
-                return false;
+                        {
+                            mystack.Push(curr);
+                        }
+                        else if (curr == '{')
+
+                        {
+                            mystack.Push(curr);
+                        }
+                        else if (curr == ')')
+                        {
+                            if (mystack.Count > 0)
+                            {
+                                var top = mystack.Pop();
+                                if (top != '(')
+                                {
+                                    return false;
+                                }
+                                else
+                                {
+                                    return true;
+                                }
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        else if (curr == ']')
+                        {
+                            if (mystack.Count > 0)
+                            {
+                                var top = mystack.Pop();
+                                if (top != '[')
+                                {
+                                    return false;
+                                }
+                                else
+                                {
+                                    return true;
+                                }
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        else if (curr == '}')
+                        {
+                            if (mystack.Count > 0)
+                            {
+                                var top = mystack.Pop();
+                                if (top != '{')
+                                {
+                                    return false;
+                                }
+                                else
+                                {
+                                    return true;
+                                }
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+
             }
             catch (Exception)
             {
