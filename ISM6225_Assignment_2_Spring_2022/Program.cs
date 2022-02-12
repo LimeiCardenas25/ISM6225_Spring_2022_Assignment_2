@@ -284,8 +284,23 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //write your code here.
-                return "";
+                var s = secret.ToArray();
+                var g = guess.ToArray();
+                int counta = 0;
+                int countb = 0;
+                for (var i = 0; i < secret.Length; i++)
+                {
+                    if (s[i] == g[i])
+                    {
+                        counta++;
+                    }
+                    else
+                    {
+                        if (g.Contains(s[i]))
+                        { countb++; }
+                    }
+                }
+                return string.Concat("\"", counta, "A", countb, "B", "\"");
             }
             catch (Exception)
             {
