@@ -8,6 +8,7 @@ WRITE YOUR CODE IN THE RESPECTIVE QUESTION FUNCTION BLOCK
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ISM6225_Assignment_2_Spring_2022
 {
@@ -227,8 +228,29 @@ namespace ISM6225_Assignment_2_Spring_2022
         {
             try
             {
-                //write your code here.
-                return 0;
+                var V = new List<int>();
+                var frequency = arr.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
+                int max = 0;
+                foreach (var item in frequency)
+                {
+                    if (item.Key == item.Value)
+                    {
+                        V.Add(item.Value);
+                    }
+                }
+                for (var i = 0; i < V.Count; i++)
+                {
+                    if (V.Count > 0 && V[i] > max)
+                    {
+                        max = V[i];
+                    }
+                }
+                if (max >= 1)
+                { return max; }
+                else
+                {
+                    return -1;
+                }
             }
             catch (Exception)
             {
